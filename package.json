@@ -1,5 +1,5 @@
 {
-  "name": "Scale",
+  "name": "scale",
   "version": "1.0.1",
   "description": "A moderation and fun discord bot",
   "scripts": {
@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/y21/Scale/",
   "dependencies": {
-    "discord.js": "^11.2.1",
+    "discord.js": "^11.2.1"
   }
 }
