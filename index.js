@@ -11,16 +11,7 @@ const announce = require("./src/Announcement.js");
 const db = require("./src/db.json");
 const fs = require("fs");
 const config = require("./config.json");
-
-class Reaction {
-	constructor(emoji){
-		this.emoji = emoji;
-	}
-	react(message){
-		message.react(this.emoji);
-	}
-}
-
+const Reaction = require("./src/ReactionClass.js");
 
 
 
