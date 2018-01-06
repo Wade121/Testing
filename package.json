@@ -1,0 +1,25 @@
+{
+  "name": "Scale",
+  "version": "1.0.1",
+  "description": "A moderation and fun discord bot",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "8.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/An-Idiots-Guide/guidebot.git"
+  },
+  "author": "y21",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/y21/Scale/issues"
+  },
+  "homepage": "https://github.com/y21/Scale/",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+  }
+}
