@@ -10,6 +10,7 @@ const say = require("./src/Say.js");
 const announce = require("./src/Announcement.js");
 const db = require("./src/db.json");
 const fs = require("fs");
+const config = require("./config.json");
 
 client.on("ready", () => {
   console.log(app + " v" + version + " > Connected to DiscordAPI in " + (new Date() - startUpTime) + "ms.");
@@ -270,4 +271,4 @@ client.on("guildBanAdd", (guild, user) => {
   }
 });
 
-client.login("token");
+client.login(config.token);
