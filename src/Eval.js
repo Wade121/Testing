@@ -17,12 +17,3 @@ module.exports = function(message, evalArgs, Discord, client){
                 message.channel.send(new Discord.RichEmbed().setTitle("Evaluation").setColor(0xd32f2f).setDescription("```https\n" + e + "\n```"));
             }
 }
-/*
-const NS_PER_SEC = 1e9;
-const time = process.hrtime(); 
-
-58*618; // oder irgendwas anderes
-
-const diff = process.hrtime(time); 
-diff[0] * NS_PER_SEC + diff[1]; // die nanosekunden
-*/
