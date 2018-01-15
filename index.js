@@ -18,7 +18,7 @@ const Reaction = require("./src/ReactionClass.js");
 
 client.on("ready", () => {
   console.log(config.app + " v" + config.version + " > Connected to DiscordAPI in " + (new Date() - startUpTime) + "ms.");
-  client.user.setGame(config.app + " " + config.version + " | " + config.prefix + "help");
+  client.user.setActivity("v1.2 | :help", {type: "LISTENING"});
   client.user.setStatus("idle");
 });
 client.on("message", (message) => {
