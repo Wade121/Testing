@@ -32,6 +32,9 @@ client.on("message", (message) => {
   else if(message.content.toLowerCase() === prefix + "channelinfo"){
           require("./src/ChannelInfo.js")(Discord, message);
   }
+  else if(message.content.toLowerCase() === prefix + "guildinfo"){
+          require("./src/GuildInfo.js")(Discord, message);
+  }
   else if(message.content.toLowerCase() === config.prefix + "ping"){
 	  message.channel.send("Pinging... ").then(m => m.edit("Heartbeat: `" + (new Date() - m.createdAt) + "ms`\nAverage Ping: `" + client.ping + "ms`"));
   }
