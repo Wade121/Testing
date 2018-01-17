@@ -29,6 +29,9 @@ client.on("message", (message) => {
   if(message.content.toLowerCase().startsWith(config.prefix + "help")){
     helpModule(client, message, Discord, config.prefix);
   }
+  else if(message.content.toLowerCase() === prefix + "channelinfo"){
+          require("./src/ChannelInfo.js")(Discord, message);
+  }
   else if(message.content.toLowerCase() === config.prefix + "ping"){
 	  message.channel.send("Pinging... ").then(m => m.edit("Heartbeat: `" + (new Date() - m.createdAt) + "ms`\nAverage Ping: `" + client.ping + "ms`"));
   }
