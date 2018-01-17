@@ -8,6 +8,7 @@ module.exports = function(prefix){
     "r / " + prefix + "reverse [string] - Reverse a text",
     "game [string] - Set game of scale (Owner-only)",
     "discriminator [discrim] - Filter users by their discriminator",
-    "channelinfo - Information about this channel"
+    "channelinfo - Information about this channel",
+    "guildinfo - Information about this guild"
   ];
 }
