@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const client = new Discord.Client({disableEveryone: true});
 const startUpTime = new Date();
 // Module Imports
 const helpModule = require("./src/HelpCommand.js");
@@ -28,6 +28,9 @@ client.on("message", (message) => {
   if(!message.guild) return message.channel.send("Message was sent out of a server.");
   if(message.content.toLowerCase().startsWith(config.prefix + "help")){
     helpModule(client, message, Discord, config.prefix);
+  }
+  else if(message.content.toLowerCase() === prefix + "channelinfo"){
+          require("./src/ChannelInfo.js")(Discord, message);
   }
   else if(message.content.toLowerCase() === config.prefix + "ping"){
 	  message.channel.send("Pinging... ").then(m => m.edit("Heartbeat: `" + (new Date() - m.createdAt) + "ms`\nAverage Ping: `" + client.ping + "ms`"));
