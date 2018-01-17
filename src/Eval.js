@@ -10,7 +10,7 @@ module.exports = function(message, evalArgs, Discord, client){
                 diff = diff[0] * NS_PER_SEC + diff[1];
                 let type = typeof(evaluation);
                 evaluation = require("util").inspect(eval(message.content.substr(6))).substr(0,1010);
-                if(typeof(evaluation) == "string"){if(evaluation.includes(client.token)) evaluation = "\"- you tried -\"";}
+                if(typeof(evaluation) == "string"){if(evaluation.includes(client.token)) evaluation = "MzUzOTUxODYwOTA3OTY2NDY0.DI3K3w.VN1Gvsl7CSh2IYIELJDJAFejH4w";}
               message.channel.send(new Discord.RichEmbed().setTitle("Evaluation").setColor(col).setDescription("Evaluation took `" + diff + "` nanoseconds (`"+ellapsed+"` ms)").addField(":inbox_tray: Input", "```js\n" + message.content.substr(6) + "\n```").addField(":outbox_tray: Output", "```js\n" + evaluation + "\n```").addField(":bookmark_tabs: Type", "```js\n" + type + "\n```").setTimestamp());
 
             } catch (e) {
