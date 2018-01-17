@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const client = new Discord.Client({disableEveryone: true});
 const startUpTime = new Date();
 // Module Imports
 const helpModule = require("./src/HelpCommand.js");
