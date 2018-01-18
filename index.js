@@ -32,6 +32,8 @@ client.on("message", (message) => {
     if (!message.guild) return message.channel.send("Message was sent out of a server.");
     if (message.content.toLowerCase().startsWith(config.prefix + "help")) {
         helpModule(client, message, Discord, config.prefix);
+    } else if(message.content.toLowerCase() === prefix + "userinfo"){
+        require("./src/UserInfo.js")(Discord, message); 
     } else if (message.content.toLowerCase() === prefix + "channelinfo") {
         require("./src/ChannelInfo.js")(Discord, message);
     } else if (message.content.toLowerCase() === prefix + "guildinfo") {
