@@ -1,6 +1,9 @@
 module.exports = class {
     constructor() {
         this.version = "1.3";
+        this.token = "";
+        this.prefix = ":";
+        this.owner = "312715611413413889"; 
         this.commands = {
             "fun": {
                 "ping": {
