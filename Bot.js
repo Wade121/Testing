@@ -69,6 +69,11 @@ module.exports = class {
                     "description": "Softbans a user (bans and unbans a user to clear all messages)",
                     "arguments": 1,
                     "status": true
+                },
+                "unban": {
+                    "description": "Unbans a user",
+                    "arguments": 1,
+                    "status": true
                 }
             },
             "miscellaneous": {
