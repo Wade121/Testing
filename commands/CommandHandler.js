@@ -16,7 +16,7 @@ module.exports = class extends bot {
     }
     /**
      * @param  {string} command Command (one of <bot>.commands)
-     * @param  {object} message Message
+     * @param  {object} message Message object
      */
     static runCommand(command, message) {
         command += ".js";
@@ -34,6 +34,6 @@ module.exports = class extends bot {
             path = reg_path + "miscellaneous/" + command;
         }
         let _command = require(path);
-        new _command().run(message);
+        new _command(message).run();
     }
 }
