@@ -7,8 +7,10 @@ module.exports = class extends bot {
      * @param  {string} command Command (one of <bot>.commands)
      * @returns {boolean} 
      */
-    static checkCommand(command) {
+    constructor(){
         super();
+    }
+    static checkCommand(command) {
         if(Object.keys(Bot.commands.fun).includes(command) || 
         Object.keys(Bot.commands.owner).includes(command) || 
         Object.keys(Bot.commands.moderation).includes(command) ||
@@ -35,11 +37,7 @@ module.exports = class extends bot {
             _command = require(`./owner/${command}`);
         }
         if(Object.keys(Bot.commands.owner).includes(__command)){
-            if(message.author.id === this.owner){
-                new _command(message).run();
-            }else{
-                message.react("389090190506852353");
-            }
+            if(message.author.id != Bot.owner) return message.react("389090190506852353");
         }
         new _command(message).run();
     }
