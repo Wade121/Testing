@@ -39,6 +39,13 @@ module.exports = class extends bot {
         if(Object.keys(Bot.commands.owner).includes(__command)){
             if(message.author.id != Bot.owner) return message.react("389090190506852353");
         }
+        // Hardcode
+        if(__command == "clear" || __command == "mute" || __command == "unmute"){
+            if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.react("389090190506852353");
+        }
+        if(__command == "ban" || __command == "softban"){
+            if(!message.member.hasPermission('BAN_MEMBERS')) return message.react("389090190506852353");
+        }
         new _command(message).run();
     }
 }

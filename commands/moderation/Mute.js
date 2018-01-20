@@ -4,39 +4,23 @@ const Discord = require("discord.js");
 
 module.exports = class extends bot {
     /**
-     * @param  {object} this.message this.message object
+     * @param  {object} message Message object
      */
     constructor(message) {
         super();
-        this.message = this.message;
+        this.message = message;
         this._run = () => {
-            if (!this.message.guild.roles.find("name", "muted")) {
-                this.message.react("389090190506852353");
-                this.message.reply("There's no role called \"muted\". Write __y__es if you want me to create one.");
-                this.message.channel.awaitthis.messages(m => m.author.id === this.message.author.id && (m.content == "y" || m.content == "yes"), {
-                    max: 1,
-                    time: 10000
-                }).then(mes => {
-                    this.message.guild.createRole({
-                        name: "muted",
-                        position: 0
-                    });
-                    this.message.channel.send("Role `muted` was created.");
-                }).catch(e => this.message.channel.send("No"));
-            }
-            if (this.message.guild.roles.find("name", "muted")) {
-                this.message.mentions.members.first().addRole(this.message.guild.roles.find("name", "muted"));
-                this.message.channel.send("Successfully muted " + this.message.mentions.users.first().tag + ".").then(m => m.awaitReaction());
-                if (this.message.guild.channels.find("name", "mod-logs")) {
-                    this.message.guild.channels.find("name", "mod-logs").send(new Discord.RichEmbed()
-                        .setTitle("New Action")
-                        .setDescription(this.message.mentions.users.first().tag + " was muted.")
-                        .setAuthor(this.message.guild.name, this.message.guild.iconURL)
-                        .setTimestamp()
-                        .setColor("RED")
-                    );
+            try {
+                if(this.message.mentions.members.first().roles.has(this.message.guild.roles.find("name", "muted"))) return message.reply("mentioned user is already muted.");
+                if(this.message.guild.roles.find("name", "muted")){
+                    this.message.mentions.members.first().addRole(this.message.guild.roles.find("name", "muted"));
+                }else{
+                    this.message.guild.createRole({name: "muted"}).then(r => this.message.reply("created a role called 'muted' because there was no and added it to " + this.message.mentions.users.first().tag));
+                    this.message.mentions.members.first().addRole(this.message.guild.roles.find("name", "muted"));
                 }
-            };
+            } catch (e) {
+
+            }
         }
     }
     /**
@@ -47,7 +31,7 @@ module.exports = class extends bot {
     }
     run() {
         if (this.commands.moderation.mute.status) {
-            this._run(this.this.message);
+            this._run(this.message);
         }
     }
 }
