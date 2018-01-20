@@ -11,7 +11,7 @@ module.exports = class extends bot {
         this.message = message;
         this._run = () => {
             try {
-                if(this.message.mentions.members.first().roles.has(this.message.guild.roles.find("name", "muted"))) return message.reply("mentioned user is already muted.");
+                if(this.message.mentions.members.first().roles.has(this.message.guild.roles.find("name", "muted").id)) return message.reply("mentioned user is already muted.");
                 if(this.message.guild.roles.find("name", "muted")){
                     this.message.mentions.members.first().addRole(this.message.guild.roles.find("name", "muted"));
                     this.message.reply("successfully muted " + this.message.mentions.users.first().tag)
