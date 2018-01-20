@@ -21,7 +21,7 @@ module.exports = class extends bot {
         this._run = fn;
     }
     run() {
-        if (this.commands.fun.ping.status) {
+        if (this.commands.owner.game.status) {
             this._run(this.message);
         }
     }

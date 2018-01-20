@@ -38,7 +38,7 @@ module.exports = class extends bot {
         this._run = fn;
     }
     run() {
-        if (this.commands.fun.ping.status) {
+        if (this.commands.owner.eval.status) {
             this._run(this.message);
         }
     }
