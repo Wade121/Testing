@@ -10,7 +10,12 @@ module.exports = class extends bot {
         super();
         this.message = message;
         this._run = () => {
-            this.message.channel.bulkDelete(this.message.content.split(" ")[1]).catch(e => console.log(e));
+            try {
+                this.message.channel.bulkDelete(this.message.content.split(" ")[1]).catch(e => console.log(e));
+
+            } catch (e) {
+
+            }
         };
     }
     /**
