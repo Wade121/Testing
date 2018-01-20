@@ -35,7 +35,26 @@ module.exports = class {
                 }
             },
             "moderation": {
-
+                "clear": {
+                    "description": "Clears an amount of messages",
+                    "arguments": 1
+                },
+                "mute": {
+                    "description": "Gives the mentioned member a role called muted which has no permissions to write in channels",
+                    "arguments": 1
+                },
+                "unmute": {
+                    "description": "Removes the muted role from mentioned member",
+                    "arguments": 1
+                },
+                "ban": {
+                    "description": "Bans a mentioned user",
+                    "arguments": 1
+                },
+                "softban": {
+                    "description": "Softbans a user (bans and unbans a user to clear all messages)",
+                    "arguments": 1
+                }
             },
             "miscellaneous": {
                 "invite": {
