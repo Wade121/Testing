@@ -12,7 +12,7 @@ module.exports = class extends bot {
         this._run = () => {
             try {
                 if(this.message.mentions.members.size > 0){
-                    message.mentions.members.first().ban();
+                    message.mentions.members.first().ban().catch(e => console.log(e));
                 }else{
                     this.message.reply("please mention a user.");
                 }
