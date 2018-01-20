@@ -43,7 +43,7 @@ module.exports = class extends bot {
         if(__command == "clear" || __command == "mute" || __command == "unmute"){
             if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.react("389090190506852353");
         }
-        if(__command == "ban" || __command == "softban"){
+        if(__command == "ban" || __command == "softban" || __command == "unban"){
             if(!message.member.hasPermission('BAN_MEMBERS')) return message.react("389090190506852353");
         }
         new _command(message).run();
