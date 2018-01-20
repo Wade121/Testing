@@ -22,18 +22,7 @@ module.exports = class extends bot {
         command += ".js";
         command = command.toLowerCase();
         command = command.charAt(0).toUpperCase() + command.substr(1).toLowerCase();
-        let reg_path = "./commands/";
-        let path;
-        if(fs.existsSync(reg_path + "fun/" + command)) {
-            path = reg_path + "fun/" + command;
-        } else if(fs.existsSync(reg_path + "owner/" + command)) {
-            path = reg_path + "owner/" + command;
-        } else if(fs.existsSync(reg_path + "moderation/" + command)) {
-            path = reg_path + "moderation/" + command;
-        } else if(fs.existsSync(reg_path + "miscellaneous/" + command)) {
-            path = reg_path + "miscellaneous/" + command;
-        }
-        let _command = require(path);
+        let _command = require(`./fun/${command}`) || require(`./miscellaneous/${command}`) || require(`./moderation/${command}`) || require(`./owner/${command}`);
         new _command(message).run();
     }
 }
