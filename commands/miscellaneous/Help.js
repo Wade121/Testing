@@ -24,7 +24,7 @@ module.exports = class extends bot {
         this._run = fn;
     }
     run() {
-        if (this.commands.miscellaneous.softban.status) {
+        if (this.commands.miscellaneous.help.status) {
             this._run(this.message);
         }
     }
