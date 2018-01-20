@@ -10,7 +10,7 @@ module.exports = class extends bot {
         super();
         this.message = message;
         this._run = () => {
-            this.message.channel.send("Pinging... ").then(m => m.edit("Heartbeat: `" + (new Date() - m.createdAt) + "ms`\nAverage Ping: `" + this.message.client.ping + "ms`"));
+            this.message.channel.send("Pinging... ").then(m => m.edit("Heartbeat: `" + (new Date() - m.createdAt) + "ms`\nAverage Ping: `" + this.message.client.ping + "ms`")).catch(e => console.log(e));
         }
     }
     /**
