@@ -11,7 +11,7 @@ module.exports = class extends bot {
         this.message = message;
         this._run = () => {
             try {
-                this.message.reply("soon...");
+                this.message.reply("https://gist.github.com/y21/f7fdd0df8865e3dc6b338b37717ab8ef");
             } catch (e) {
 
             }
