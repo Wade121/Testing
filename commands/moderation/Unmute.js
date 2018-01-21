@@ -16,6 +16,7 @@ module.exports = class extends bot {
                     return this.message.reply("There's no role called \"muted\".");
                 }
                 this.message.mentions.members.first().removeRole(this.message.guild.roles.find("name", "muted").id);
+                this.message.reply("successfully unmuted " + this.message.mentions.users.first().tag);
             } catch (e) {
 
             }

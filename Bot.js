@@ -25,6 +25,16 @@ module.exports = class {
                     "description": "Yes or no",
                     "arguments": 0,
                     "status": true
+                },
+                "balance": {
+                    "description": "Your current balance",
+                    "arguments": 0,
+                    "status": true
+                },
+                "daily": {
+                    "description": "Receive your 1000也",
+                    "arguments": 0,
+                    "status": true
                 }
             },
             "owner": {
@@ -110,7 +120,7 @@ module.exports = class {
             }
         };
     }
-} 
+}
 /*
 module.exports = function(prefix){
 	return [
