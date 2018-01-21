@@ -5,6 +5,7 @@ const Bot = new bot();
 const CommandHandler = require("./commands/CommandHandler.js");
 
 client.on("message", message => {
+    if(message.author.bot) return;
     if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(1)) && message.content.startsWith(Bot.prefix)) {
         CommandHandler.runCommand(message.content.split(" ")[0].substr(1), message);
     }
