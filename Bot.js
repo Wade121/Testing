@@ -52,6 +52,11 @@ module.exports = class {
                     "description": "Say something in a specific channel. (Argument 1 can be either 'this' or a channelid.",
                     "arguments": 2,
                     "status": true
+                },
+                "regexp": {
+                    "description": "Tests a regular expression",
+                    "arguments": 2,
+                    "status": true
                 }
             },
             "moderation": {
@@ -121,14 +126,3 @@ module.exports = class {
         };
     }
 }
-/*
-module.exports = function(prefix){
-	return [
-	prefix + "clear [Amount of Messages to delete] - Delete an amount of messages",y
-	"mute [Mention] - Mutes a member",y
-	"unmute [Mention] - Unmutes a member",y
-	"ban [Mention] - Bans a member",y
-	"softban [Mention] - Softbans a member (Ban and unban to remove all messages from that user)"
-	];
-}
-  */
