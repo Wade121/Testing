@@ -11,6 +11,7 @@ module.exports = class extends bot {
         this.message = message;
         this._run = () => {
             try {
+                if(parseInt(this.message.content.split(" ")[1]).toString() == "NaN") return this.message.reply("Input is not a number.");
                 function dhm_convert(ms) {
                     let days, daysms, hours, hoursms, minutes, minutesms, sec;
                     days = Math.floor(ms / (24 * 60 * 60 * 1000));
