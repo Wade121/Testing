@@ -1,7 +1,6 @@
 const bot = require("../../Bot.js");
 const Bot = new bot();
 const Discord = require("discord.js");
-const EconomyHandler = require("../Economy.js");
 
 module.exports = class extends bot {
     /**
@@ -11,6 +10,7 @@ module.exports = class extends bot {
         super();
         this.message = message;
         this._run = () => {
+            const EconomyHandler = require("../Economy.js");
             if(Date.now() - EconomyHandler.getProperty("lastDaily", this.message.author) > 86400000){
                 EconomyHandler.applyDaily(this.message.author);
                 message.reply("successfully redeemed your daily reward of 1000也");
@@ -26,7 +26,7 @@ module.exports = class extends bot {
         this._run = fn;
     }
     run() {
-        if(this.commands.fun.discriminator.status){
+        if(this.commands.fun.daily.status){
             this._run(this.message);
         }
     }
