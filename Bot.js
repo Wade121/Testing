@@ -45,6 +45,11 @@ module.exports = class {
                     "description": "Converts an amount of milliseconds to a human-readable date",
                     "arguments": 1,
                     "status": true
+                },
+                "gstring": {
+                    "description": "Generates a (pseudo) random string. ",
+                    "arguments": 0,
+                    "status": true
                 }
             },
             "owner": {
