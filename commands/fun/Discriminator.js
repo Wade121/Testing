@@ -10,7 +10,9 @@ module.exports = class extends bot {
         super();
         this.message = message;
         this._run = () => {
-            this.message.client.users.filter(u => u.discriminator === this.message.content.split(" ")[1]).size > 0 ? this.message.reply("```js\n" + this.message.client.users.filter(u => u.discriminator === this.message.content.split(" ")[1]).map(u => u.tag).join(",\n") + "\n```").catch(e => console.log(e)) : this.message.reply("No users with that discriminator found.").catch(e => console.log(e));
+            this.message.client.users.filter(u => u.discriminator === this.message.content.split(" ")[1])
+            .size > 0 ? this.message.reply("```js\n" + this.message.client.users.filter(u => u.discriminator === this.message.content.split(" ")[1]).map(u => u.tag).join(",\n") + "\n```")
+            .catch(e => message.reply("An error occured: `" + e + "`")) : this.message.reply("No users with that discriminator found.").catch(e => console.log(e));
         };
     }
     /**
