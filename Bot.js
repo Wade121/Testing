@@ -136,6 +136,11 @@ module.exports = class {
                     "description": "Information about you",
                     "arguments": 0,
                     "status": true
+                },
+                "report": {
+                    "description": "Reports a bug",
+                    "arguments": 1,
+                    "status": true
                 }
             }
         };
