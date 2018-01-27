@@ -40,6 +40,11 @@ module.exports = class {
                     "description": "Receive your 1000也",
                     "arguments": 0,
                     "status": true
+                },
+                "msconvert": {
+                    "description": "Converts an amount of milliseconds to a human-readable date",
+                    "arguments": 1,
+                    "status": true
                 }
             },
             "owner": {
