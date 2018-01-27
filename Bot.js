@@ -11,6 +11,11 @@ module.exports = class {
                     "arguments": 0,
                     "status": true
                 },
+                "roll": {
+                    "description": "Rolls a number (made for tournaments)",
+                    "arguments": 0,
+                    "status": true
+                },
                 "reverse": {
                     "description": "Reverses a message",
                     "arguments": 1,
