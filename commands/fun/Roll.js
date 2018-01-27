@@ -20,7 +20,7 @@ module.exports = class extends bot {
         this._run = fn;
     }
     run() {
-        if(new bot().commands.fun.discriminator.status){
+        if(new bot().commands.fun.roll.status){
             this._run(this.message);
         }
     }
