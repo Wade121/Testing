@@ -141,6 +141,11 @@ module.exports = class {
                     "description": "Reports a bug",
                     "arguments": 1,
                     "status": true
+                },
+                "undo": {
+                    "description": "Deletes last 15 bots' messages",
+                    "arguments": 0,
+                    "status": true
                 }
             },
             "image-manipulation": {
