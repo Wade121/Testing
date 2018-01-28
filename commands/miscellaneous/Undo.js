@@ -30,7 +30,7 @@ module.exports = class extends bot {
         this._run = fn;
     }
     run() {
-        if (this.commands.moderation.clear.status) {
+        if (this.commands.moderation.undo.status) {
             this._run(this.message);
         }
     }
