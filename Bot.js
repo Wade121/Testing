@@ -148,6 +148,11 @@ module.exports = class {
                     "description": "Grey's a picture",
                     "arguments": 1,
                     "status": true
+                },
+                "invert": {
+                    "description": "Inverts a picture",
+                    "arguments": 1,
+                    "status": true
                 }
             }
         };
