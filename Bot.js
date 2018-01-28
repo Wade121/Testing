@@ -158,6 +158,11 @@ module.exports = class {
                     "description": "Inverts a picture",
                     "arguments": 1,
                     "status": true
+                },
+                "bright": {
+                    "description": "Brightnesses an image",
+                    "arguments": 2,
+                    "status": true
                 }
             }
         };
