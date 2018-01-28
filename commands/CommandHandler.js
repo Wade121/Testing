@@ -14,7 +14,9 @@ module.exports = class extends bot {
         if(Object.keys(Bot.commands.fun).includes(command) || 
         Object.keys(Bot.commands.owner).includes(command) || 
         Object.keys(Bot.commands.moderation).includes(command) ||
-        Object.keys(Bot.commands.miscellaneous).includes(command)) return true;
+        Object.keys(Bot.commands.miscellaneous).includes(command) ||
+        Object.keys(Bot.commands["image-manipulation"]).includes(command)
+        ) return true;
         else return false;
     }
     /**
@@ -35,6 +37,8 @@ module.exports = class extends bot {
             _command = require(`./moderation/${command}`);
         }else if(fs.existsSync(`./commands/owner/${command}`)){
             _command = require(`./owner/${command}`);
+        }else if(fs.existsSync(`./commands/image-manipulation/${command}`)){
+            _command = require(`./image-manipulation/${command}`);
         }
         if(Object.keys(Bot.commands.owner).includes(__command)){
             if(message.author.id != Bot.owner) return message.react("389090190506852353");
