@@ -19,7 +19,7 @@ module.exports = class extends bot {
                 }).catch(e => this.message.reply("An error occured: `" + e + "`"));
                 function sendBuffer(err, buff){
                     if(err) return this.message.reply("An error occured: `" + err + "`");
-                    message.channel.send(new Discord.Attachment(buff, "grey.png"));
+                    message.channel.send("Requested by: " + message.author.tag,new Discord.Attachment(buff, "grey.png"));
                 }
             } catch (e) {
                 this.message.reply("An error occured: `" + e + "`");
