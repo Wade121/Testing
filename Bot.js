@@ -142,6 +142,13 @@ module.exports = class {
                     "arguments": 1,
                     "status": true
                 }
+            },
+            "image-manipulation": {
+                "grey": {
+                    "description": "Grey's a picture",
+                    "arguments": 1,
+                    "status": true
+                }
             }
         };
     }
