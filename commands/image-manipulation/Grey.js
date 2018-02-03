@@ -12,17 +12,15 @@ module.exports = class extends bot {
         this.message = message;
         this._run = () => {
             try {
-                if(this.message.content.split(" ").length < 2) return this.message.reply("please enter a valid url.");
-                Jimp.read(this.message.content.split(" ").slice(1).join(" ")).then(buffer => {
+                if(this.message.content.split(" ").length < 2 && this.message.attachments.size == 0) return this.message.reply("please enter a valid url.");
+                Jimp.read(this.message.content.split(" ").slice(1).join(" ") || this.message.attachments.first().url).then(buffer => {
                     buffer.greyscale();
                     buffer.getBuffer(Jimp.MIME_PNG, sendBuffer)
-                }).catch(e => this.message.reply("An error occured: `" + e + "`"));
+                }).catch(console.error);
                 function sendBuffer(err, buff){
-                    if(err) return this.message.reply("An error occured: `" + err + "`");
-                    message.channel.send("Requested by: " + message.author.tag,new Discord.Attachment(buff, "grey.png"));
+                    message.channel.send("Requested by: " + message.author.tag,new Discord.Attachment(buff, "grey.png")).catch(console.error);
                 }
             } catch (e) {
-                this.message.reply("An error occured: `" + e + "`");
             }
         }
     }
