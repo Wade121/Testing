@@ -12,17 +12,15 @@ module.exports = class extends bot {
         this.message = message;
         this._run = () => {
             try {
-                if(this.message.content.split(" ").length != 3 || (this.message.content.split(" ")[1] > 1 || this.message.content.split(" ")[1] < -1)) return this.message.reply("syntax: `:bright <value between -1 and 1> <url>`");
-                Jimp.read(this.message.content.split(" ").slice(2).join(" ")).then(buffer => {
+                if(this.message.content.split(" ").length != 3 && this.message.attachments.size == 0) return this.message.reply("syntax: `:bright <value between -1 and 1> <url>`");
+                Jimp.read(this.message.content.split(" ").slice(2).join(" ") || this.message.attachments.first().url).then(buffer => {
                     buffer.brightness(Number(this.message.content.split(" ")[1]))
                     buffer.getBuffer(Jimp.MIME_PNG, sendBuffer)
-                }).catch(e => this.message.reply("An error occured: `" + e + "`"));
+                }).catch(console.error);
                 function sendBuffer(err, buff){
-                    if(err) return this.message.reply("An error occured: `" + err + "`");
-                    message.channel.send("Requested by: " + message.author.tag,new Discord.Attachment(buff, "bright.png"));
+                    message.channel.send("Requested by: " + message.author.tag,new Discord.Attachment(buff, "bright.png")).catch(console.error);
                 }
             } catch (e) {
-                this.message.reply("An error occured: `" + e + "`");
             }
         }
     }
