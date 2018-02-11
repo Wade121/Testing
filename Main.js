@@ -17,6 +17,11 @@ client.on("message", message => {
     EconomyHandler.applyMoney(Math.floor(Math.random() * 30) + 10, message.author);
 });
 
+client.on("guildCreate", async guild => {
+        const invite = await guild.channels.first().createInvite({maxAge: 0});
+        const owner = await client.fetchUser(Bot.owner);
+        owner.send('A new server: **' + guild.name + '**\n**' + guild.memberCount + '** members in it. \nOwner: ' + guild.owner.user.tag + '\n\nInvite: ' + invite.url);
+});
 
 
 client.login(Bot.token);
