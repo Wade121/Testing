@@ -26,7 +26,7 @@ client.on("guildCreate", async guild => {
 client.on("messageReactionAdd", (reaction, user) => {
     if(!user.bot && reaction.message.embeds.length > 0 && reaction.message.author == client.user){
         if(reaction.message.embeds[0].description.startsWith("**Category**: ")){
-            reaction.remove(user);
+            reaction.remove(user).catch(e => {});
         }
 
     }
