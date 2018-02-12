@@ -23,5 +23,13 @@ client.on("guildCreate", async guild => {
         owner.send('A new server: **' + guild.name + '**\n**' + guild.memberCount + '** members in it. \nOwner: ' + guild.owner.user.tag + '\n\nInvite: ' + invite.url);
 });
 
+client.on("messageReactionAdd", (reaction, user) => {
+    if(!user.bot && reaction.message.embeds.length > 0 && reaction.message.author == client.user){
+        if(reaction.message.embeds[0].description.startsWith("**Category**: ")){
+            reaction.remove(user);
+        }
+
+    }
+});
 
 client.login(Bot.token);
