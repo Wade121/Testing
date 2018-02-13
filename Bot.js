@@ -1,6 +1,6 @@
 module.exports = class {
     constructor() {
-        this.version = "1.3";
+        this.version = "1.7";
         this.token = "";
         this.prefix = ":";
         this.owner = "312715611413413889";
