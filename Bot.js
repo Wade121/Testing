@@ -164,6 +164,23 @@ module.exports = class {
                     "arguments": 2,
                     "status": true
                 }
+            },
+            "tags": {
+                "tags": {
+                    "description": "Shows a list of top 10 tags",
+                    "arguments": 0,
+                    "status": true
+                },
+                "tag": {
+                    "description": "Shows a specific tag",
+                    "arguments": 1,
+                    "status": true
+                },
+                "ctag": {
+                    "description": "Creates a tag. First parameter is the name and second the content",
+                    "arguments": 2,
+                    "status": true
+                }
             }
         };
     }
