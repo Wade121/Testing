@@ -164,6 +164,9 @@ module.exports = class {
                     "arguments": 2,
                     "status": true
                 }
+            },
+            "tags": {
+
             }
         };
     }
