@@ -9,7 +9,6 @@ client.on("message", message => {
     if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(1)) && message.content.startsWith(Bot.prefix)) {
         CommandHandler.runCommand(message.content.split(" ")[0].substr(1), message);
     }
-    EconomyHandler.applyMoney(Math.floor(Math.random() * 30) + 10, message.author);
 });
 
 client.on("guildCreate", async guild => {
