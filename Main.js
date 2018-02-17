@@ -12,6 +12,15 @@ client.on("message", message => {
     EconomyHandler.applyMoney(Math.floor(Math.random() * 30) + 10, message.author);
 });
 
+
+client.on("messageUpdate", (oldMessage, message) => {
+    if (message.author.bot || message.channel.type == "dm") return;
+    if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(1)) && message.content.startsWith(Bot.prefix)) {
+        CommandHandler.runCommand(message.content.split(" ")[0].substr(1), message);
+    }
+});
+
+
 client.on("guildCreate", async guild => {
         const invite = await guild.channels.first().createInvite({maxAge: 0});
         const owner = await client.fetchUser(Bot.owner);
