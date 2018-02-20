@@ -1,6 +1,8 @@
 const bot = require("../Bot.js");
 const Bot = new bot();
 const fs = require("fs");
+const cdown = require("../Cooldown.js");
+const Cooldown = new cdown(1000);
 
 module.exports = class extends bot {
     /**
@@ -26,6 +28,9 @@ module.exports = class extends bot {
      */
     static runCommand(command, message) {
         let __command = command;
+        if(Cooldown.check(message.author.id)) return message.reply("Slow down! Wait another `" + ((Cooldown.delay - Cooldown.getTimeDiff(message.author.id)) / 1000) + "` seconds.");
+        if(Cooldown.cooldowns.has(message.author.id)) Cooldown.remove(message.author.id);
+        Cooldown.add(message.author.id, Date.now());
         command += ".js";
         command = command.toLowerCase();
         command = command.charAt(0).toUpperCase() + command.substr(1).toLowerCase();
@@ -53,21 +58,6 @@ module.exports = class extends bot {
         if(__command == "ban" || __command == "softban" || __command == "unban"){
             if(!message.member.hasPermission('BAN_MEMBERS')) return message.react("389090190506852353");
         }
-
-
         new _command(message).run();
-    }
-  
-  static async commandCounter(db, message){
-      try {
-        let commandRuns = await db.get('SELECT * FROM commands WHERE command="' + message.content.split(" ")[0].substr(1).toLowerCase() + '"')
-        if(!commandRuns) db.run('INSERT INTO commands VALUES ("' + message.content.split(" ")[0].substr(1).toLowerCase() + '", 1)');
-        else {
-            commandRuns = parseInt(commandRuns.uses);
-            db.run('UPDATE commands SET uses=' + (++commandRuns) + ' WHERE command="' + message.content.split(" ")[0].substr(1).toLowerCase() + '"');
-        }
-        }catch(e){
-     console.log(e); 
-  }
     }
 }
