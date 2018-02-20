@@ -58,6 +58,21 @@ module.exports = class extends bot {
         if(__command == "ban" || __command == "softban" || __command == "unban"){
             if(!message.member.hasPermission('BAN_MEMBERS')) return message.react("389090190506852353");
         }
+
+
         new _command(message).run();
+    }
+
+  static async commandCounter(db, message){
+      try {
+        let commandRuns = await db.get('SELECT * FROM commands WHERE command="' + message.content.split(" ")[0].substr(1).toLowerCase() + '"')
+        if(!commandRuns) db.run('INSERT INTO commands VALUES ("' + message.content.split(" ")[0].substr(1).toLowerCase() + '", 1)');
+        else {
+            commandRuns = parseInt(commandRuns.uses);
+            db.run('UPDATE commands SET uses=' + (++commandRuns) + ' WHERE command="' + message.content.split(" ")[0].substr(1).toLowerCase() + '"');
+        }
+        }catch(e){
+     console.log(e);
+        }
     }
 }
