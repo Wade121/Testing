@@ -19,7 +19,7 @@ module.exports = class extends bot {
                     name: this.message.content.split(" ")[1],
                     content: this.message.content.split(" ").slice(2).join(" "),
                     args: this.message.content.split(" ").slice(1).join(" "),
-                    expression: /^\w{1,14}\s(\w|\s){3,1000}$/g
+                    expression: /^\w{1,14}\s.{3,1000}$/g
                 };
                 if(!tag.expression.test(tag.args)) return this.message.reply("tag is too long/short.```ini\nRegular Expression: " + tag.expression + "\n```");
                 let _q = await db.get('select * from tags where name="' + this.message.content.split(" ")[1] + '"');
