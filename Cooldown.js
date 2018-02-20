@@ -1,4 +1,9 @@
 module.exports = class {
+    /**
+     * Constructor for Cooldown class
+     *
+     * @param delay Delay for commands in milliseconds
+     */
     constructor(delay){
         this._cooldown = new Map();
         this._delay = delay;
