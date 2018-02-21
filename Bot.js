@@ -163,6 +163,11 @@ module.exports = class {
                     "description": "Brightnesses an image",
                     "arguments": 2,
                     "status": true
+                },
+                "buttons": {
+                    "description": "First argument: Text on left button; second argument: text on right button",
+                    "arguments": 2,
+                    "status": true
                 }
             },
             "tags": {
