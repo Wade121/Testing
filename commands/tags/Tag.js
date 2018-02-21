@@ -21,6 +21,7 @@ module.exports = class extends bot {
                 this.message.channel.send(new Discord.RichEmbed()
                     .setAuthor(tagowner.tag, tagowner.displayAvatarURL)
                     .setDescription(tag.content)
+                    .setImage(tag.content.match(/http(s)?:\/\/.+\.(jpg|bpm|jpeg|png)/) ? tag.content.match(/http(s)?:\/\/.+\.(jpg|bpm|jpeg|png)/)[0] : " ")
                 );
                 db.run('update tags set uses=' + (++tag.uses) + ' where name="' + this.message.content.split(" ").slice(1).join(" ") + '"');
             } catch (e) {
