@@ -6,8 +6,8 @@ const CommandHandler = require("./commands/CommandHandler.js");
 
 client.on("message", message => {
     if (message.author.bot || message.channel.type == "dm") return;
-    if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(1)) && message.content.startsWith(Bot.prefix)) {
-        CommandHandler.runCommand(message.content.split(" ")[0].substr(1), message);
+    if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(2)) && message.content.startsWith(Bot.prefix)) {
+        CommandHandler.runCommand(message.content.split(" ")[0].substr(2), message);
     }
     EconomyHandler.applyMoney(Math.floor(Math.random() * 30) + 10, message.author);
 });
@@ -15,8 +15,8 @@ client.on("message", message => {
 
 client.on("messageUpdate", (oldMessage, message) => {
     if (message.author.bot || message.channel.type == "dm") return;
-    if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(1)) && message.content.startsWith(Bot.prefix)) {
-        CommandHandler.runCommand(message.content.split(" ")[0].substr(1), message);
+    if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(2)) && message.content.startsWith(Bot.prefix)) {
+        CommandHandler.runCommand(message.content.split(" ")[0].substr(2), message);
     }
 });
 
