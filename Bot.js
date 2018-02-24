@@ -1,8 +1,8 @@
 module.exports = class {
     constructor() {
-        this.version = "1.3";
+        this.version = "1.7";
         this.token = "";
-        this.prefix = ":";
+        this.prefix = "s.";
         this.owner = "312715611413413889";
         this.commands = {
             "fun": {
@@ -34,12 +34,12 @@ module.exports = class {
                 "balance": {
                     "description": "Your current balance",
                     "arguments": 0,
-                    "status": true
+                    "status": false
                 },
                 "daily": {
                     "description": "Receive your 1000也",
                     "arguments": 0,
-                    "status": true
+                    "status": false
                 },
                 "msconvert": {
                     "description": "Converts an amount of milliseconds to a human-readable date",
@@ -71,6 +71,26 @@ module.exports = class {
                 "regexp": {
                     "description": "Tests a regular expression",
                     "arguments": 2,
+                    "status": true
+                },
+                "sqlget": {
+                    "description": "Runs a get-query",
+                    "arguments": 1,
+                    "status": true
+                },
+                "sqlrun": {
+                    "description": "Runs a run-query",
+                    "arguments": 1,
+                    "status": true
+                },
+                "exec": {
+                    "description": "Executes a bash command",
+                    "arguments": 1,
+                    "status": true
+                },
+                "blacklist": {
+                    "description": "Adds an user id to blacklist (user isn't allowed to execute commands anymore)\nSyntax: " + this.prefix + "blacklist <userid> <expires (in seconds)>",
+                    "arguments": 3,
                     "status": true
                 }
             },
@@ -146,6 +166,16 @@ module.exports = class {
                     "description": "Deletes last 15 bots' messages",
                     "arguments": 0,
                     "status": true
+                },
+                "commandstats": {
+                    "description": "Command stats",
+                    "arguments": 0,
+                    "status": true
+                },
+                "shelp": {
+                    "description": "Help for a specific command",
+                    "arguments": 0,
+                    "status": true
                 }
             },
             "image-manipulation": {
@@ -164,9 +194,29 @@ module.exports = class {
                     "arguments": 2,
                     "status": true
                 },
+                "flip": {
+                    "description": "Flips a picture",
+                    "arguments": 1,
+                    "status": true
+                },
+                "dither": {
+                    "description": "Dithers a picture",
+                    "arguments": 1,
+                    "status": true
+                },
+                "blur": {
+                    "description": "Blurs a picture",
+                    "arguments": 1,
+                    "status": true
+                },
                 "buttons": {
-                    "description": "First argument: Text on left button; second argument: text on right button",
+                    "description": "First argument: Text on left button; second argument: text on right button. (Arguments splitted up by |) Example usage: " + this.prefix + "buttons Caption1 | Caption2",
                     "arguments": 2,
+                    "status": true
+                },
+                "lilguy": {
+                    "description": "Put text on 'lets put this lil guy outside' meme.",
+                    "arguments": 1,
                     "status": true
                 }
             },
@@ -184,6 +234,11 @@ module.exports = class {
                 "ctag": {
                     "description": "Creates a tag. First parameter is the name and second the content",
                     "arguments": 2,
+                    "status": true
+                },
+                "deltag": {
+                    "description": "Deletes an owned tag.",
+                    "arguments": 1,
                     "status": true
                 }
             }
