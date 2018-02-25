@@ -9,11 +9,13 @@ module.exports = class extends bot {
     constructor(message) {
         super();
         this.message = message;
-        this._run = () => {
+        this._run = async () => {
             try {
                     let user = this.message.guild.members.filter(m => new RegExp(this.message.content.split(" ").slice(1).join(" ")).test(m.user.username)).first();
                     if(!user) return this.message.reply("User not found!");
                     user = user.user;
+                    let proportion = await this.message.channel.fetchMessages({ limit: 100 });
+                    proportion = proportion.filter(m => m.author.id === user.id).size;
                     this.message.channel.send(new Discord.RichEmbed()
                         .setTitle("User Info")
                         .setColor("RANDOM")
@@ -26,8 +28,10 @@ module.exports = class extends bot {
                         .addField("Nickname", this.message.guild.member(user).nickname || '/')
                         .addField("Playing", user.presence.game ? user.presence.game.name : "/")
                         .addField("Highest Role", this.message.guild.member(user).highestRole.name)
+                        .addField("Proportion of last 100 message (%)", (proportion / 100 * 100) + "%")
                     ).catch(e => console.log(e));
             } catch (e) {
+                this.message.reply(e.toString());
             }
         }
     }
