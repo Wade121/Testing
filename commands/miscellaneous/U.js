@@ -28,7 +28,7 @@ module.exports = class extends bot {
                         .addField("Nickname", this.message.guild.member(user).nickname || '/')
                         .addField("Playing", user.presence.game ? user.presence.game.name : "/")
                         .addField("Highest Role", this.message.guild.member(user).highestRole.name)
-                        .addField("Proportion of last 100 message (%)", (proportion / 100 * 100) + "%")
+                        .addField("Proportion of last 100 messages (%)", (proportion / 100 * 100) + "%")
                     ).catch(e => console.log(e));
             } catch (e) {
                 this.message.reply(e.toString());
