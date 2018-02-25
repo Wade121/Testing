@@ -11,7 +11,7 @@ module.exports = class extends bot {
         this.message = message;
         this._run = async () => {
             try {
-                    let user = this.message.guild.members.filter(m => new RegExp(this.message.content.split(" ").slice(1).join(" ")).test(m.user.username)).first();
+                    let user = this.message.content.split(" ").length < 2 ? this.message.guild.member(this.message.client.user) : this.message.guild.members.filter(m => new RegExp(this.message.content.split(" ").slice(1).join(" ")).test(m.user.username)).first();
                     if(!user) return this.message.reply("User not found!");
                     user = user.user;
                     let proportion = await this.message.channel.fetchMessages({ limit: 100 });
@@ -22,8 +22,8 @@ module.exports = class extends bot {
                         .setDescription("Here are some information about " + user.tag)
                         .addField("Tag", user.tag)
                         .setThumbnail(user.displayAvatarURL)
-                        .addField("Registered", new Date(user.createdAt).toLocaleDateString())
-                        .addField("Joined", new Date(this.message.guild.member(user).joinedAt).toLocaleDateString())
+                        .addField("Registered", new Date(user.createdAt).toLocaleString())
+                        .addField("Joined", new Date(this.message.guild.member(user).joinedAt).toLocaleString())
                         .addField("Roles", this.message.guild.member(user).roles.map(r => r.name).join(", "))
                         .addField("Nickname", this.message.guild.member(user).nickname || '/')
                         .addField("Playing", user.presence.game ? user.presence.game.name : "/")
