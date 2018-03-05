@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const client = new Discord.Client({ disableEveryone: true });
 const bot = require("./Bot.js");
 const Bot = new bot();
 const CommandHandler = require("./commands/CommandHandler.js");
