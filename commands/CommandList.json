@@ -91,6 +91,11 @@
       "description":"Fetches all users of every guild",
       "arguments":0,
       "status":true
+    },
+    "toggle": {
+      "description":"Toggle modules via command",
+      "arguments":1,
+      "status": true
     }
   },
   "moderation":{
@@ -174,6 +179,11 @@
     "shelp":{
       "description":"Help for a specific command",
       "arguments":0,
+      "status":true
+    },
+    "ys": {
+      "description":"Evaluates YScript code",
+      "arguments":1,
       "status":true
     }
   },
