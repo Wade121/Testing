@@ -65,14 +65,14 @@ module.exports = class extends bot {
 
   static async commandCounter(db, message){
       try {
-        let commandRuns = await db.get('SELECT * FROM commands WHERE command="' + message.content.split(" ")[0].substr(1).toLowerCase() + '"')
-        if(!commandRuns) db.run('INSERT INTO commands VALUES ("' + message.content.split(" ")[0].substr(1).toLowerCase() + '", 1)');
+        let commandRuns = await db.get('SELECT * FROM commands WHERE command="' + message.content.split(" ")[0].substr(2).toLowerCase() + '"')
+        if(!commandRuns) db.run('INSERT INTO commands VALUES ("' + message.content.split(" ")[0].substr(2).toLowerCase() + '", 1)');
         else {
             commandRuns = parseInt(commandRuns.uses);
-            db.run('UPDATE commands SET uses=' + (++commandRuns) + ' WHERE command="' + message.content.split(" ")[0].substr(1).toLowerCase() + '"');
+            db.run('UPDATE commands SET uses=' + (++commandRuns) + ' WHERE command="' + message.content.split(" ")[0].substr(2).toLowerCase() + '"');
         }
         }catch(e){
-     console.log(e);
+             console.log(e);
         }
     }
 }
