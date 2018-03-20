@@ -15,8 +15,8 @@ module.exports = class extends bot {
              * DO NOT USE THIS FOR SENSIBLE DATA SUCH AS PASSWORDS
              */
             try {
-                let randomString = Math.random().toString(16).substr(2);
-                this.message.reply("(This is a pseudo-random string. For more information, read this: https://en.wikipedia.org/wiki/Pseudorandom_number_generator)\n\nYour generated string: " + randomString);
+                let randomString = Math.random().toString(36).substr(2);
+                this.message.reply("Your generated string: " + randomString);
             } catch (e) {
                 this.message.reply("An error occured: `" + e + "`");
             }
