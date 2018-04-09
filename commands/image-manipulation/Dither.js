@@ -10,11 +10,9 @@ module.exports = class extends bot {
     constructor(message) {
         super();
         this.message = message;
-        this._run = async () => {
+        this._run = () => {
             try {
-                let lang = await this.getServerLang(this.message.guild.id) || {};
-                let langset = this.langset;
-                if(this.message.content.split(" ").length < 2 && this.message.attachments.size == 0) return this.message.reply(this.langset[lang.lang || 'en'].INVALID_URL);
+                if(this.message.content.split(" ").length < 2 && this.message.attachments.size == 0) return this.message.reply("please enter a valid url.");
                 Jimp.read(this.message.content.split(" ").slice(1).join(" ") || this.message.attachments.first().url).then(buffer => {
                     buffer.dither565();
                     buffer.getBuffer(Jimp.MIME_PNG, sendBuffer)
