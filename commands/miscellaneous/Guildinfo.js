@@ -18,7 +18,7 @@ module.exports = class extends bot {
                 this.message.channel.send(new Discord.RichEmbed()
                     .setTitle("Guild Information")
                     .setColor("RANDOM")
-                    .setThumbnail(this.message.guild.iconURL)
+                    .setThumbnail(guild.iconURL)
                     .setDescription(`Here are some information about the guild *${guild.name}*`)
                     .addField("AFK VoiceChannel", guild.afkChannel ? guild.afkChannel.name : "/")
                     .addField("Available", guild.available ? "Yes" : "No")
@@ -26,7 +26,7 @@ module.exports = class extends bot {
                     .addField("Default Role", guild.defaultRole ? guild.defaultRole.name : "/")
                     .addField("Emojis", guild.emojis.size > 0 ? guild.emojis.array().join(", ") : "/")
                     .addField("Members", guild.memberCount)
-                    .addField("Owner", guild.owner.user.tag)
+                    .addField("Owner", guild.owner ? guild.owner.user.tag : "this guild has no owner")
                     .addField("Systemchannel", guild.systemChannel ? guild.systemChannel.name : "/")
                     .addField("Verification Level", guild.verificationLevel)
                 );
