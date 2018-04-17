@@ -12,23 +12,26 @@ module.exports = class extends bot {
         this._run = () => {
             try {
                 if (!this.message.guild) return;
+                let args = this.message.content.split(" ").slice(1);
+                let guild = this.message.client.guilds.get(args[0]) || this.message.client.guilds.find(g=>new RegExp(args[0], "i").test(g.name)) || this.message.guild;
+                if(!guild) this.message.reply("somehow guild is undefined. :thinking:");
                 this.message.channel.send(new Discord.RichEmbed()
                     .setTitle("Guild Information")
                     .setColor("RANDOM")
                     .setThumbnail(this.message.guild.iconURL)
-                    .setDescription("Here are some information about **this** guild.")
-                    .addField("AFK VoiceChannel", this.message.guild.afkChannel ? this.message.guild.afkChannel.name : "/")
-                    .addField("Available", this.message.guild.available ? "Yes" : "No")
-                    .addField("Amount of channels", `${this.message.guild.channels.filter(c => c.type === "text").size} Textchannels and ${this.message.guild.channels.filter(c => c.type === "voice").size} Voicechannels`)
-                    .addField("Default Role", this.message.guild.defaultRole ? this.message.guild.defaultRole.name : "/")
-                    .addField("Emojis", this.message.guild.emojis.size > 0 ? this.message.guild.emojis.array().join(", ") : "/")
-                    .addField("Members", this.message.guild.memberCount)
-                    .addField("Owner", this.message.guild.owner.user.tag)
-                    .addField("Systemchannel", this.message.guild.systemChannel ? this.message.guild.systemChannel.name : "/")
-                    .addField("Verification Level", this.message.guild.verificationLevel)
+                    .setDescription(`Here are some information about the guild *${guild.name}*`)
+                    .addField("AFK VoiceChannel", guild.afkChannel ? guild.afkChannel.name : "/")
+                    .addField("Available", guild.available ? "Yes" : "No")
+                    .addField("Amount of channels", `${guild.channels.filter(c => c.type === "text").size} Textchannels and ${guild.channels.filter(c => c.type === "voice").size} Voicechannels`)
+                    .addField("Default Role", guild.defaultRole ? guild.defaultRole.name : "/")
+                    .addField("Emojis", guild.emojis.size > 0 ? guild.emojis.array().join(", ") : "/")
+                    .addField("Members", guild.memberCount)
+                    .addField("Owner", guild.owner.user.tag)
+                    .addField("Systemchannel", guild.systemChannel ? guild.systemChannel.name : "/")
+                    .addField("Verification Level", guild.verificationLevel)
                 );
             } catch (e) {
-
+                this.message.reply(e.toString());
             }
         }
     }
