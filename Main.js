@@ -3,23 +3,24 @@ const client = new Discord.Client({ disableEveryone: true });
 const bot = require("./Bot.js");
 const Bot = new bot();
 const CommandHandler = require("./commands/CommandHandler.js");
+const db = require('sqlite');
+db.open('./scale.sqlite');
 
 client.on("message", message => {
     if (message.author.bot || message.channel.type == "dm") return;
     if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(2)) && message.content.startsWith(Bot.prefix)) {
-        CommandHandler.runCommand(message.content.split(" ")[0].substr(2), message);
+      CommandHandler.commandCounter(db, message);
+      CommandHandler.runCommand(message.content.split(" ")[0].substr(2), message);
     }
-    EconomyHandler.applyMoney(Math.floor(Math.random() * 30) + 10, message.author);
 });
-
 
 client.on("messageUpdate", (oldMessage, message) => {
     if (message.author.bot || message.channel.type == "dm") return;
     if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(2)) && message.content.startsWith(Bot.prefix)) {
+        CommandHandler.commandCounter(db, message);
         CommandHandler.runCommand(message.content.split(" ")[0].substr(2), message);
     }
 });
-
 
 client.on("guildCreate", async guild => {
         const invite = await guild.channels.first().createInvite({maxAge: 0});
