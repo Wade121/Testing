@@ -1,6 +1,8 @@
 # Scale
 A moderation and fun discord bot
 
+<a href="https://discordapp.com/oauth2/authorize?client_id=389019692343230475&permissions=8&scope=bot">Invite</a> | <a href="https://discord.gg/jMUBKTG">Support Server</a>
+
 ### Contributing
 If you want to contribute to this repository, do so, but please follow these guidelines to get merged:
 
