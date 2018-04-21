@@ -15,8 +15,7 @@ module.exports = class extends bot {
              * DO NOT USE THIS FOR SENSIBLE DATA SUCH AS PASSWORDS
              */
             try {
-                let randomString = Math.random().toString(36).substr(2);
-                this.message.reply("Your generated string: " + randomString);
+                this.message.reply(Math.random().toString(36).substr(2));
             } catch (e) {
                 this.message.reply("An error occured: `" + e + "`");
             }
