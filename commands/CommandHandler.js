@@ -13,7 +13,7 @@ module.exports = class extends bot {
         super();
     }
     static checkCommand(command) {
-        return Object.values(this.commands).map(e=>Object.keys(e)).filter(o=>o.includes('sqlget')).length>0;
+        return Object.values(this.commands).map(e=>Object.keys(e)).filter(o=>o.includes(command)).length>0;
     }
     /**
      * @param  {string} command Command (one of <bot>.commands)
