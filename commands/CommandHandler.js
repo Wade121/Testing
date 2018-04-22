@@ -27,6 +27,8 @@ module.exports = class extends bot {
             category: Object.entries(this.commands).filter(e=>Object.keys(e[1]).includes(message.content.split(" ")[0].substr(Bot.prefix.length)))[0][0],
             command: message.content.split(" ")[0].substr(this.prefix.length)
         };
+        if(commandInfo.category === 'moderation' && !message.member.hasPermission('ADMINISTRATOR')) return message.reply('Insufficient permissions');
+        if(commandInfo.category === 'owner' && message.author.id!=this.owner) return message.reply('Insufficient permissions');
         let module = new (require(`./${commandInfo.category}/${commandInfo.command}.js`))(message);
         module.run();
     }
