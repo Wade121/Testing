@@ -8,17 +8,17 @@ db.open('./scale.sqlite');
 
 client.on("message", message => {
     if (message.author.bot || message.channel.type == "dm") return;
-    if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(2)) && message.content.startsWith(Bot.prefix)) {
+    if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(Bot.prefix.length)) && message.content.startsWith(Bot.prefix)) {
       CommandHandler.commandCounter(db, message);
-      CommandHandler.runCommand(message.content.split(" ")[0].substr(2), message);
+      CommandHandler.runCommand(message.content.split(" ")[0].substr(Bot.prefix.length), message);
     }
 });
 
 client.on("messageUpdate", (oldMessage, message) => {
     if (message.author.bot || message.channel.type == "dm") return;
-    if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(2)) && message.content.startsWith(Bot.prefix)) {
+    if (CommandHandler.checkCommand(message.content.split(" ")[0].substr(Bot.prefix.length)) && message.content.startsWith(Bot.prefix)) {
         CommandHandler.commandCounter(db, message);
-        CommandHandler.runCommand(message.content.split(" ")[0].substr(2), message);
+        CommandHandler.runCommand(message.content.split(" ")[0].substr(Bot.prefix.length), message);
     }
 });
 
