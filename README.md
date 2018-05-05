@@ -1,6 +1,9 @@
 # Scale
 A moderation and fun discord bot
 
+### Important
+<b> This bot has been closed on 5th may 2018 00:00 UTC, means that this bot will no longer be online anymore. This repository is also read only and I'll no longer contribute to it.  </b>
+
 <a href="https://discordapp.com/oauth2/authorize?client_id=389019692343230475&permissions=8&scope=bot">Invite</a> | <a href="https://discord.gg/jMUBKTG">Support Server</a>
 
 ### Contributing
